@@ -3,15 +3,15 @@ import ExpenseFilter from './ExpenseFilter';
 import ExpenseList from './ExpenseList';
 import ExpensesChart from './ExpensesChart';
 
-const Expenses = ({ items }) => {
+const Expenses = () => {
   return (
     <Card
       id="expenses"
       className="bg-[#1f1f1f] w-[50rem] max-w-[95%] p-4  mx-auto"
     >
       <ExpenseFilter />
-      <ExpensesChart expenses={items} />
-      <ExpenseList items={items} />
+      <ExpensesChart />
+      <ExpenseList />
     </Card>
   );
 };

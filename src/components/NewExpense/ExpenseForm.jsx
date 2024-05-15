@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ExpensesContext } from '../../contexts/ExpensesContext.jsx';
 import Button from '../UI/Button.jsx';
 import Input from './Input.jsx';
 
 const ExpenseForm = () => {
+  const { onAddExpense } = useContext(ExpensesContext);
+
   const [enteredData, setEnteredData] = useState({
     title: '',
     amount: '',
@@ -20,6 +23,15 @@ const ExpenseForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //TODO: Validate inputs
+    const expenseData = {
+      ...enteredData,
+    };
+
+    onAddExpense(expenseData);
+
+    //clear inputFields
+    setEnteredData({ title: '', amount: '', date: '' });
   };
 
   return (
@@ -34,13 +46,13 @@ const ExpenseForm = () => {
         <Input
           type="number"
           label="Amount"
-          value={345}
+          value={enteredData.amount}
           onChange={handleInputChange}
         />
         <Input
           type="date"
           label="Date"
-          value="2020-3-2"
+          value={enteredData.date}
           onChange={handleInputChange}
         />
       </div>

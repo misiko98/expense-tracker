@@ -6,7 +6,7 @@ const ChartBar = ({ label, value, maxValue }) => {
   }
 
   return (
-    <div id="chart-bar" className="flex flex-col items-center h-full">
+    <div id="chart-bar" className="flex flex-col items-center  h-full">
       <div
         id="chart-bar__inner"
         className="h-full w-full border border-[#313131] bg-[#c3b4f3] flex flex-col justify-end rounded-xl"
@@ -19,7 +19,7 @@ const ChartBar = ({ label, value, maxValue }) => {
       </div>
       <div
         id="chart-bar__label"
-        className="font-semibold text-[0.5rem] text-center"
+        className="font-semibold text-[0.5rem] text-center font-mono"
       >
         {label}
       </div>

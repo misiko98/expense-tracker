@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import { ExpensesContext } from '../../contexts/ExpensesContext';
 import Chart from '../Chart/Chart';
 
-const ExpensesChart = ({ expenses }) => {
+const ExpensesChart = () => {
+  const { expenses } = useContext(ExpensesContext);
+  
   const chartDataPoints = [
     { label: 'Jan', value: 0 },
     { label: 'Feb', value: 0 },

@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
-import { DUMMY_EXPENSES } from './data/data';
+import { ExpenseContextProvider } from './contexts/ExpensesContext';
 
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-
   return (
     <main>
-      <NewExpense />
-      <Expenses items={expenses} />
+      <ExpenseContextProvider>
+        <NewExpense />
+        <Expenses/>
+      </ExpenseContextProvider>
     </main>
   );
 };
