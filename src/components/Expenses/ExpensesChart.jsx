@@ -4,7 +4,8 @@ import Chart from '../Chart/Chart';
 
 const ExpensesChart = () => {
   const { expenses } = useContext(ExpensesContext);
-  
+  console.log(expenses);
+
   const chartDataPoints = [
     { label: 'Jan', value: 0 },
     { label: 'Feb', value: 0 },

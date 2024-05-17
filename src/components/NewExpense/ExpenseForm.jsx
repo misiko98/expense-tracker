@@ -1,16 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ExpensesContext } from '../../contexts/ExpensesContext.jsx';
+import { objectIsEmpty } from '../../utils/objectutils.js';
 import Button from '../UI/Button.jsx';
 import Input from './Input.jsx';
 
 const ExpenseForm = () => {
-  const { onAddExpense } = useContext(ExpensesContext);
-
+  const { errors, onAddExpense } = useContext(ExpensesContext);
   const [enteredData, setEnteredData] = useState({
     title: '',
     amount: '',
     date: '',
   });
+
+  useEffect(() => {
+    if (objectIsEmpty(errors)) {
+      setEnteredData({ title: '', amount: '', date: '' });
+    }
+  }, [errors]);
 
   const handleInputChange = (identifier, value) => {
     setEnteredData((prevData) => {
@@ -23,15 +29,11 @@ const ExpenseForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODO: Validate inputs
+
     const expenseData = {
       ...enteredData,
     };
-
     onAddExpense(expenseData);
-
-    //clear inputFields
-    setEnteredData({ title: '', amount: '', date: '' });
   };
 
   return (
@@ -42,18 +44,21 @@ const ExpenseForm = () => {
           label="Title"
           value={enteredData.title}
           onChange={handleInputChange}
+          inputError={errors.title}
         />
         <Input
           type="number"
           label="Amount"
           value={enteredData.amount}
           onChange={handleInputChange}
+          inputError={errors.amount}
         />
         <Input
           type="date"
           label="Date"
           value={enteredData.date}
           onChange={handleInputChange}
+          inputError={errors.date}
         />
       </div>
       <div
