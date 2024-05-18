@@ -1,9 +1,6 @@
-import { useContext } from 'react';
-import { ExpensesContext } from '../../contexts/ExpensesContext';
 import ExpenseItem from './ExpenseItem';
 
-const ExpenseList = () => {
-  const { expenses } = useContext(ExpensesContext);
+const ExpenseList = ({ expenses }) => {
   return (
     <ul className="flex flex-col gap-4">
       {expenses.map((expense) => (

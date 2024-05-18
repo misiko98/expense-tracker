@@ -6,3 +6,7 @@ const Card = styled.div`
 `;
 
 export default Card;
+
+
+
+

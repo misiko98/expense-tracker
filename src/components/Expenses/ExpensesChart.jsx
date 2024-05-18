@@ -1,11 +1,6 @@
-import { useContext } from 'react';
-import { ExpensesContext } from '../../contexts/ExpensesContext';
 import Chart from '../Chart/Chart';
 
-const ExpensesChart = () => {
-  const { expenses } = useContext(ExpensesContext);
-  console.log(expenses);
-
+const ExpensesChart = ({ expenses, selected }) => {
   const chartDataPoints = [
     { label: 'Jan', value: 0 },
     { label: 'Feb', value: 0 },
@@ -26,7 +21,12 @@ const ExpensesChart = () => {
     chartDataPoints[expenseMonth].value += expense.amount;
   }
 
-  return <Chart dataPoints={chartDataPoints} />;
+  return (
+    <div className="flex flex-col gap-4">
+      <p>Expenses Summary for year {selected}</p>
+      <Chart dataPoints={chartDataPoints} />
+    </div>
+  );
 };
 
 export default ExpensesChart;
